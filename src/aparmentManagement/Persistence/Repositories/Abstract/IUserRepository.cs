@@ -10,5 +10,6 @@ namespace Persistence.Repositories.Abstract
 {
     public interface IUserRepository : IAsyncRepository<User>
     {
+        List<OperationClaim> GetClaims(User user);
     }
 }
