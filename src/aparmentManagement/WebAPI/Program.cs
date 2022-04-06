@@ -34,10 +34,10 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    //Token geldiðinde hangi kontroller yapýlsýn ayarlarý:
+                    
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = true,          //Issuer'ý biz www.engin.com yapmýþtýk, o þekilde gelsin. Gelmezse hata verir.
+                        ValidateIssuer = true,          
                         ValidateAudience = true,        
                         ValidateLifetime = true,        
                         ValidIssuer = tokenOptions.Issuer,      

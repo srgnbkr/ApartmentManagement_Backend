@@ -9,7 +9,7 @@ namespace Application.Features.Users.DTOs
     public class UserListDto
     {
         public int Id { get; set; }
-        public string? HomeOwnerTypeName { get; set; }
+        public string? HomeOwnerTypeDescription { get; set; }
         public long? IdentityNumber { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

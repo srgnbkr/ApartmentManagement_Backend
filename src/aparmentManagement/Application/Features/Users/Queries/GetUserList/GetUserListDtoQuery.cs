@@ -38,13 +38,10 @@ namespace Application.Features.Users.Queries.GetUserList
             #region Method
             public async Task<UserListModel> Handle(GetUserListDtoQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<User> users = await _userRepository.GetListAsync(
-                    include: c => c.Include(c => c.HomeOwnerType),
-                    index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
-
-                UserListModel mappedUserListModel = _mapper.Map<UserListModel>(users);
-                return mappedUserListModel;
+                var users = await _userRepository.GetListAsync(include:u=>u.Include(u => u.HomeOwnerType),
+                    index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+                var mappedUsers = _mapper.Map<UserListModel>(users);
+                return mappedUsers;
 
 
 

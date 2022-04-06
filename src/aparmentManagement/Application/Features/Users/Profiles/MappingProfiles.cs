@@ -16,7 +16,7 @@ namespace Application.Features.Users.Profiles
         public MappingProfiles()
         {
             CreateMap<IPaginate<User>, UserListModel>().ReverseMap();
-            CreateMap<User, UserListDto>().ForMember(c => c.HomeOwnerTypeName, opt => opt.MapFrom(c => c.HomeOwnerType.Description));
+            CreateMap<User, UserListDto>().ForMember(c => c.HomeOwnerTypeDescription, opt => opt.MapFrom(c => c.HomeOwnerType.Description));
 
         }
     }

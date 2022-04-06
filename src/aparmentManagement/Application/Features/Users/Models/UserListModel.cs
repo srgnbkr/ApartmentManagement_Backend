@@ -10,6 +10,6 @@ namespace Application.Features.Users.Models
 {
     public class UserListModel : BasePagebleModel
     {
-        public IList<UserListDto> UserLists { get; set; }
+        public IList<UserListDto> Items { get; set; }
     }
 }
