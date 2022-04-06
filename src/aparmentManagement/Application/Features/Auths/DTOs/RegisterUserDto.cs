@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Security.DTOs
+namespace Application.Features.Auths.DTOs
 {
-    public class UserForRegisterDto
+    public class RegisterUserDto
     {
+        public int Id { get; set; }
         public int? HomeOwnerTypeId { get; set; }
         public long? IdentityNumber { get; set; }
         public string? FirstName { get; set; }

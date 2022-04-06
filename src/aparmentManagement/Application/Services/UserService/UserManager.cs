@@ -26,6 +26,7 @@ namespace Application.Services.UserService
         #endregion
 
         #region Methods
+        
         public async Task<User> GetByMail(string email)
         {
             var result = await this.userRepository.GetAsync(u => u.Email == email);
