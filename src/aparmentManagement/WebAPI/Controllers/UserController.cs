@@ -1,0 +1,23 @@
+﻿using Application.Features.Users.Queries.GetUserList;
+using Core.Application.Requests;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WebAPI.Controllers.Base;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : BaseController
+    {
+
+        [HttpGet("getall")]
+        public async Task<IActionResult> GetAll([FromQuery] PageRequest pageRequest)
+        {
+            var query = new GetUserListDtoQuery();
+            query.PageRequest = pageRequest;
+            var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+    }
+}
