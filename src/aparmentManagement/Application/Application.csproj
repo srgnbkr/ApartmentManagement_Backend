@@ -23,8 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Auths\Rules\" />
-    <Folder Include="Features\Users\Commands\" />
-    <Folder Include="Features\Users\Rules\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using Application.Features.Users.DTOs;
+﻿using Application.Features.Users.Commands.UpdateUser;
+using Application.Features.Users.DTOs;
 using Application.Features.Users.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
@@ -17,6 +18,9 @@ namespace Application.Features.Users.Profiles
         {
             CreateMap<IPaginate<User>, UserListModel>().ReverseMap();
             CreateMap<User, UserListDto>().ForMember(c => c.HomeOwnerTypeDescription, opt => opt.MapFrom(c => c.HomeOwnerType.Description));
+
+            CreateMap<User, UpdateUserCommand>().ReverseMap();
+            CreateMap<User, UpdateUserDto>().ReverseMap();
 
         }
     }

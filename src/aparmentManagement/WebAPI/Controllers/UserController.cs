@@ -1,4 +1,5 @@
-﻿using Application.Features.Users.Queries.GetUserList;
+﻿using Application.Features.Users.Commands.UpdateUser;
+using Application.Features.Users.Queries.GetUserList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,13 @@ namespace WebAPI.Controllers
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
             return Ok(result);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update([FromBody] UpdateUserCommand updateUserCommand)
+        {
+            var result = await Mediator.Send(updateUserCommand);
+            return Created("", result);
         }
     }
 }
