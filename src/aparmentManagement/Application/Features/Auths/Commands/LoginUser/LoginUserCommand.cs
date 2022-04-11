@@ -41,7 +41,7 @@ namespace Application.Features.Auths.Commands.LoginUser
             {
                 var userCheck = await _userRepository.GetAsync(u => u.Email == request.Email);
                 if (userCheck is null)
-                    throw new Exception(Messages.User.UserNotFound);
+                    throw new Exception(Messages.User.PasswordError);
 
                 if (!HashingHelper.VerifyPasswordHash(request.Password, userCheck.PasswordHash, userCheck.PasswordSalt))
                     throw new Exception(Messages.User.PasswordError);

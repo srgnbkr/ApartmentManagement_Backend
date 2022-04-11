@@ -11,7 +11,9 @@ namespace Core.Utilities.Messages
         public static class User
         {
             public static string UserNotFound => "Kullanıcı bulunamadı";
+            
             public static string PasswordError => "Kullanıcı Adı veya Şifre Hatalı";
+            public static string PasswordNotMatch => "Şifreler uyuşmuyor";
 
         }
     }

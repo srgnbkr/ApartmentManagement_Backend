@@ -56,6 +56,7 @@ namespace Application.Features.Users.Commands.UpdateUser
                 HashingHelper.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
                 mappedUser.PasswordHash = passwordHash;
                 mappedUser.PasswordSalt = passwordSalt;
+                mappedUser.Status = true;
 
                 User updateUser = await _userRepository.UpdateAsync(mappedUser);
                 UpdateUserDto updateUserDto = _mapper.Map<UpdateUserDto>(updateUser);
