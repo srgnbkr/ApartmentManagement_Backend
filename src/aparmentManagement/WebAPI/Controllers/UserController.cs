@@ -1,10 +1,11 @@
 ﻿using Application.Features.Users.Commands.UpdateUser;
-using Application.Features.Users.Commands.UpdateUserFromAuth;
 using Application.Features.Users.Queries.GetUserList;
+using Application.Features.Users.Queries.GetByIdUser;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Controllers.Base;
+using Application.Features.Users.DTOs;
 
 namespace WebAPI.Controllers
 {
@@ -22,6 +23,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromRoute] GetByIdUserDtoQuery getByIdUserQuery )
+        {
+            UserListDto result = await Mediator.Send(getByIdUserQuery);
+            return Ok(result);
+        }
+
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromBody] UpdateUserCommand updateUserCommand)
         {
@@ -29,12 +37,6 @@ namespace WebAPI.Controllers
             return Created("", result);
         }
 
-        [HttpPut("updateFromAuth")]
-        public async Task<IActionResult> UpdateFromAuth([FromBody] UpdateUserFromAuthCommand updateUserFromAuthCommand)
-        {
-            
-            var result = await Mediator.Send(updateUserFromAuthCommand);
-            return Created("", result);
-        }
+        
     }
 }

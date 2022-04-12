@@ -1,5 +1,6 @@
 ﻿using Application.Features.Users.DTOs;
 using AutoMapper;
+using Domain.Entities;
 using MediatR;
 using Persistence.Repositories.Abstract;
 using System;
@@ -19,13 +20,28 @@ namespace Application.Features.Users.Queries.GetByIdUser
             #region Variables
             private readonly IUserRepository _userRepository;
             private readonly IMapper _mapper;
+            #endregion
 
-            public Task<UserListDto> Handle(GetByIdUserDtoQuery request, CancellationToken cancellationToken)
+            #region Constructor
+            public GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper)
             {
-                throw new NotImplementedException();
+                _userRepository = userRepository;
+                _mapper = mapper;
             }
 
+
             #endregion
+
+            #region Method
+            public async Task<UserListDto> Handle(GetByIdUserDtoQuery request, CancellationToken cancellationToken)
+            {
+                User user = await _userRepository.GetAsync(u => u.Id == request.Id);
+                UserListDto userListDto = _mapper.Map<UserListDto>(user);
+                return userListDto;
+            }
+            #endregion
+
+
         }
     }
 }
