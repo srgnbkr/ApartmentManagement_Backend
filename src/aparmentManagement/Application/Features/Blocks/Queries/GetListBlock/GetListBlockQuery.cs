@@ -28,16 +28,22 @@ namespace Application.Features.Blocks.Queries.GetListBlock
             public GetListBlockQueryHandler(IBlockRepository blockRepository, IMapper mapper)
             {
                 _blockRepository = blockRepository;
-                _mapper= mapper;
+                _mapper = mapper;
             }
 
 
-            #endregion
+            #endregion 
 
             #region Method
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="request"></param>
+            /// <param name="cancellationToken"></param>
+            /// <returns></returns>
             public async Task<BlockListModel> Handle(GetListBlockQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<Block> blocks = await _blockRepository.GetListAsync(index : request.PageRequest.Page,
+                IPaginate<Block> blocks = await _blockRepository.GetListAsync(index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize);
 
                 BlockListModel mappedBlockListModel = _mapper.Map<BlockListModel>(blocks);
@@ -45,11 +51,16 @@ namespace Application.Features.Blocks.Queries.GetListBlock
             }
             #endregion
 
-
-
-
         }
-
-
     }
 }
+
+
+
+
+        
+            
+
+
+    
+

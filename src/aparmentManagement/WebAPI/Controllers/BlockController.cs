@@ -1,4 +1,5 @@
-﻿using Application.Features.Blocks.Queries.GetListBlock;
+﻿using Application.Features.Blocks.Commands.CreateBlock;
+using Application.Features.Blocks.Queries.GetListBlock;
 using Core.Application.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,13 @@ namespace WebAPI.Controllers
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
             return Ok(result);
+        }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> Add([FromBody] CreateBlockCommand request)
+        {
+            var result = await Mediator.Send(request);
+            return Created("", result); 
         }
     }
 }

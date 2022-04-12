@@ -1,4 +1,6 @@
-﻿using Application.Services.AuthService;
+﻿using Application.Features.Blocks.Rules;
+using Application.Features.Users.Rules;
+using Application.Services.AuthService;
 using Application.Services.UserService;
 using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
@@ -23,7 +25,13 @@ namespace Application.ServiceRegistrations
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            
+
+
+            #region BusinessRules
+            services.AddScoped<UserBusinessRules>();
+            services.AddScoped<BlockBusinessRules>();
+            #endregion
+
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<ITokenHelper, JwtHelper>();

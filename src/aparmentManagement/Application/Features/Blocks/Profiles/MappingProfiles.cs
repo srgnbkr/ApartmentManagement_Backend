@@ -1,4 +1,5 @@
-﻿using Application.Features.Blocks.DTOs;
+﻿using Application.Features.Blocks.Commands.CreateBlock;
+using Application.Features.Blocks.DTOs;
 using Application.Features.Blocks.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
@@ -18,6 +19,11 @@ namespace Application.Features.Blocks.Profiles
             CreateMap<Block, BlockListDto>().ReverseMap();
             CreateMap<IPaginate<Block>, BlockListModel>().ReverseMap();
             CreateMap<Block, BlockDto>().ReverseMap();
+
+            #region CreateCommandMapping
+            CreateMap<Block, CreateBlockCommand>().ReverseMap();
+            CreateMap<Block, CreateBlockDto>().ReverseMap();
+            #endregion
         }
     }
 }
