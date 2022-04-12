@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Users.Queries.GetByIdUser
 {
+    
     public class GetByIdUserDtoQuery : IRequest<UserListDto>
     {
         public int Id { get; set; }
+
         
         public class GetByIdUserQueryHandler : IRequestHandler<GetByIdUserDtoQuery, UserListDto>
         {
@@ -38,6 +40,7 @@ namespace Application.Features.Users.Queries.GetByIdUser
                 User user = await _userRepository.GetAsync(u => u.Id == request.Id);
                 UserListDto userListDto = _mapper.Map<UserListDto>(user);
                 return userListDto;
+                
             }
             #endregion
 

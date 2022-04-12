@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Features\Auths\Rules\" />
+    <Folder Include="Features\Blocks\Commands\" />
+    <Folder Include="Features\Blocks\Rules\" />
   </ItemGroup>
 
 </Project>
