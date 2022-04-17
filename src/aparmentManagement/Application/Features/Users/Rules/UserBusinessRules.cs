@@ -45,9 +45,17 @@ namespace Application.Features.Users.Rules
             return Task.CompletedTask;
         }
 
+        public Task UserEmailExists(string email)
+        {
+            if (_userRepository.GetAsync(u => u.Email == email).Result != null)
+                throw new BusinessException(Messages.User.EmailAlreadyExists);
+            return Task.CompletedTask;
+        }
+        
+        
+        
 
-
-
+        
         #endregion
     }
 }

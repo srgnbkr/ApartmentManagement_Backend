@@ -1,4 +1,5 @@
 ﻿using Application.Features.Blocks.Commands.CreateBlock;
+using Application.Features.Blocks.Commands.UpdateBlock;
 using Application.Features.Blocks.Queries.GetListBlock;
 using Core.Application.Requests;
 using MediatR;
@@ -26,6 +27,13 @@ namespace WebAPI.Controllers
         {
             var result = await Mediator.Send(request);
             return Created("", result); 
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update([FromBody] UpdateBlockCommand request)
+        {
+            var result = await Mediator.Send(request);
+            return Created("",result);
         }
     }
 }

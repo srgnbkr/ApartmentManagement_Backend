@@ -1,4 +1,5 @@
 ﻿using Application.Features.Blocks.Commands.CreateBlock;
+using Application.Features.Blocks.Commands.UpdateBlock;
 using Application.Features.Blocks.DTOs;
 using Application.Features.Blocks.Models;
 using AutoMapper;
@@ -23,6 +24,11 @@ namespace Application.Features.Blocks.Profiles
             #region CreateCommandMapping
             CreateMap<Block, CreateBlockCommand>().ReverseMap();
             CreateMap<Block, CreateBlockDto>().ReverseMap();
+            #endregion
+
+            #region UpdateCommandMapping
+            CreateMap<Block, UpdateBlockCommand>().ReverseMap();
+            CreateMap<Block, UpdateBlockDto>().ReverseMap();
             #endregion
         }
     }

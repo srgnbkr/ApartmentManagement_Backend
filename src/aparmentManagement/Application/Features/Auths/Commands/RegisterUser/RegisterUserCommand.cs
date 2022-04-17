@@ -1,4 +1,5 @@
 ﻿using Application.Features.Auths.DTOs;
+using Application.Features.Users.Rules;
 using AutoMapper;
 using Core.Security.DTOs;
 using Core.Security.Hashing;
@@ -23,13 +24,15 @@ namespace Application.Features.Auths.Commands.RegisterUser
             #region Variables
             private readonly IUserRepository _userRepository;
             private readonly IMapper _mapper;
+            private readonly UserBusinessRules _userBusinessRules;
             #endregion
 
             #region Constructor
-            public CreateUserCommandHandler(IUserRepository userRepository,IMapper mapper)
+            public CreateUserCommandHandler(IUserRepository userRepository,IMapper mapper,UserBusinessRules userBusinessRules)
             {
                 _userRepository = userRepository;
                 _mapper = mapper;
+                _userBusinessRules = userBusinessRules;
             }
             #endregion
             
@@ -42,6 +45,8 @@ namespace Application.Features.Auths.Commands.RegisterUser
             /// <returns></returns>
             public async Task<RegisterUserDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
             {
+                await _userBusinessRules.UserEmailExists(request.RegisterDto.Email);
+                
                 var userToRegister = _mapper.Map<User>(request.RegisterDto);
 
                 byte[] passwordHash, passwordSalt;

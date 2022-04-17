@@ -1,5 +1,6 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Paging;
+using Core.Utilities.Messages;
 using Domain.Entities;
 using Persistence.Repositories.Abstract;
 using System;
@@ -29,7 +30,7 @@ namespace Application.Features.Blocks.Rules
         {
             IPaginate<Block> result = await _blockRepository.GetListAsync(u => u.Description == blockName);
             if(result.Items.Any())
-                throw new BusinessException("Blok Adı Kullanılıyor");
+                throw new BusinessException(Messages.Block.BlockNameExists);
 
 
         }
